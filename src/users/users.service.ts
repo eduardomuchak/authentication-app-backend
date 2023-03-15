@@ -7,7 +7,7 @@ import { z } from 'zod';
 export class UsersService {
   async create(user: UserDto) {
     const userSchema = z.object({
-      name: z.string(),
+      username: z.string(),
       email: z.string().email(),
       password: z.string(),
       bio: z.string(),
@@ -24,8 +24,8 @@ export class UsersService {
     }
   }
 
-  async findOne(id: number): Promise<UserDto | undefined> {
-    const user = await prisma.user.findUnique({ where: { id } });
+  async findOne(username: string): Promise<UserDto | undefined> {
+    const user = await prisma.user.findFirst({ where: { username } });
     return user;
   }
 }

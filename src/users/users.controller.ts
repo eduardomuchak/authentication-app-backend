@@ -7,8 +7,8 @@ export class UsersController {
   constructor(private userService: UsersService) {}
 
   @Get(':id')
-  async findOne(@Param('id') id: number) {
-    return await this.userService.findOne(+id);
+  async findOne(@Param('username') user: string) {
+    return await this.userService.findOne(user);
   }
 
   @Post('register')

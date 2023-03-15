@@ -6,8 +6,8 @@ import * as bcrypt from 'bcrypt';
 export class AuthService {
   constructor(private usersService: UsersService) {}
 
-  async validateUser(id: number, pass: string): Promise<any> {
-    const user = await this.usersService.findOne(id);
+  async validateUser(username: string, pass: string): Promise<any> {
+    const user = await this.usersService.findOne(username);
     const salt = await bcrypt.genSalt();
     const hash = await bcrypt.hash(pass, salt);
 
