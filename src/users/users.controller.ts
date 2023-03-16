@@ -6,9 +6,14 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private userService: UsersService) {}
 
-  @Get(':id')
+  @Get(':username')
   async findOne(@Param('username') user: string) {
     return await this.userService.findOne(user);
+  }
+
+  @Get('find/:email')
+  async findOneByEmail(@Param('email') user: string) {
+    return await this.userService.findOneByEmail(user);
   }
 
   @Post('register')
