@@ -22,8 +22,8 @@ export class UsersService {
     }
   }
 
-  async findOne(username: string): Promise<UserDto | undefined> {
-    const user = await prisma.user.findFirst({ where: { username } });
+  async findOne(id: number): Promise<UserDto | undefined> {
+    const user = await prisma.user.findUnique({ where: { id } });
     return user;
   }
 
